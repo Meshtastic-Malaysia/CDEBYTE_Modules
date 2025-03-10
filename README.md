@@ -44,6 +44,9 @@ Combinations:
 - When not doing either, save power by setting RXEN LOW and TXEN LOW.
 - Setting RXEN HIGH and TXEN HIGH is a bad idea, at best you waste power, at worst you damage the module's components. Never do this! Similarly, maybe it's best to leave a delay so the LNA can ramp down before turning the PA on, and leaving a delay so the PA can ramp down before turning the LNA on. It would be nice to be able to set the RF switch before enabling the LNA or PA, or a quick delay circuitry be in the module which does this, but I don't see this or a way to do so.
 
+There are some examples of this ways in which this module's RF switching options can be configured at https://github.com/meshtastic/firmware/blob/master/variants/EBYTE_ESP32-S3/variant.h
+Good discussion about how RF switching can be **designed** (you cannot change the hardware in your module!) can be found at https://github.com/jgromes/RadioLib/discussions/1320#discussioncomment-11574988
+
 ### Module power output vs SX1262 configured power output
 
 [Results and information about the test](E22-900M30S%20power%20output%20testing.txt).
