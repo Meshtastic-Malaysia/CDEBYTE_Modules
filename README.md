@@ -80,4 +80,4 @@ I wonder if the isolation of the RF switch they use is enough for 33 dBm module.
 
 ## Improvements / Next steps
 
-Please create an issue or PR if you would like to add additional information, or if you would like to fund the sacrifice of another CDEBYTE or SX126x-containing module.
+Please create an issue or PR if you would like to add verifiable additional information.
