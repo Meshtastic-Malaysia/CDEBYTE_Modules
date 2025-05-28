@@ -30,9 +30,11 @@ F2U or the component in its place appears to serve the function of a power limit
 
 ![HSMP-3822 power limiter configuration](https://github.com/S5NC/CDEBYTE_Modules/assets/145265251/22a70c9c-92bb-4f72-bbdb-2522dd9bb022)
 
+LNA (mark starting with WTA) is BFU520 - [datasheet](BFU520.pdf), chip identified by [@ndoo](https://github.com/ndoo). The components around the LNA seem to match (I have not measured component values) "Application example: 866 ISM band LNA" in the datasheet, so assuming they used the recommend values, I would guess that the gain provided by the LNA is around 12-16 dB across 868 and 915 MHz bands. As the datasheet says in the section, see AN11428. This is a rough guess because I have not measured the values of the components around the LNA!
+
 ### RF switching
 
-RXEN (indicated with cyan) is used to control an LDO (Microne S2RF, has a similar marking but is not ME6211C33M5G-N) which seems to provide power for the LNA (IC marked WTA). LNA is BFU520 - [datasheet](BFU520.pdf), chip identified by [@ndoo](https://github.com/ndoo). RXEN also is used to control the RF switch IC, in conjunction with TXEN below.
+RXEN (indicated with cyan) is used to control an LDO (Microne S2RF, has a similar marking but is not ME6211C33M5G-N) which seems to provide power for the LNA. RXEN also is used to control the RF switch IC, in conjunction with TXEN below.
 
 TXEN (indicated with magenta) is used to control a DC-DC converter (Texas Instruments TLV62568) which seems to affect VCCB and VREF2, probably what controls whether the PA is on or not. TXEN also is used to control the RF switch IC, in conjunction with RXEN above.
 
