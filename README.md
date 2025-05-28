@@ -32,7 +32,7 @@ F2U or the component in its place appears to serve the function of a power limit
 
 ### RF switching
 
-RXEN (indicated with cyan) is used to control an LDO (Microne S2RF, has a similar marking but is not ME6211C33M5G-N) which seems to provide power for the BFU520 LNA (mark starting with WTA, chip identified and [datasheet](BFU520.pdf) found by [@ndoo](https://github.com/ndoo)). RXEN also is used to control the RF switch IC, in conjunction with TXEN below.
+RXEN (indicated with cyan) is used to control an LDO (Microne S2RF, has a similar marking but is not ME6211C33M5G-N) which seems to provide power for the LNA (IC marked WTA). LNA is BFU520 - [datasheet](BFU520.pdf), chip identified by [@ndoo](https://github.com/ndoo). RXEN also is used to control the RF switch IC, in conjunction with TXEN below.
 
 TXEN (indicated with magenta) is used to control a DC-DC converter (Texas Instruments TLV62568) which seems to affect VCCB and VREF2, probably what controls whether the PA is on or not. TXEN also is used to control the RF switch IC, in conjunction with RXEN above.
 
@@ -79,8 +79,10 @@ PA is ZDH1061 - [datasheet](ZDH1061%20v1.2.1.pdf). Marking ZD1061 AP294500 ZD106
 
 The RF switching process seems to be effectively the same as the E22-900M30S described above.
 
-I wonder if the isolation of the RF switch they use is enough for 33 dBm module. For example, PE4259 (this is the IC used in SX1262 reference design, I haven't checked which IC the one used by CDEBYTE is) says 29 dB minimum and 30 dB maximum isolation. If the LNA's absolute maximum input when not powered is exceeded, it would cause damage to it. This is also another reason not to have RXEN and TXEN high at the same time, no matter whether you are transmitting or receiving.
+I wonder if the isolation of the RF switch they use is enough for 33 dBm module. For example, PE4259 (this is the IC used in SX1262 reference design, I haven't checked which IC the one used by CDEBYTE is) says 29 dB minimum and 30 dB maximum isolation. If the LNA's absolute maximum input when not powered is exceeded, it would cause damage to it. This is also another reason not to have RXEN and TXEN high at the same time, no matter whether you are transmitting or receiving. The aforementioned BFU520 has a maximum input power of 10 dBm so there is more than enough margin. Even if there wasn't, the power-limiting diode package may clamp the power down.
 
 ## Improvements / Next steps
+
+At what signal level does the power-limiting diode pair kick in? I would hope 10 dBm or lower as this is the maximum input power for the LNA. If the power limiter kicks in during normal use (for example if two modules very close to each other), is the SNR impaired beyond succesful reception of data?
 
 Please create an issue or PR if you would like to add verifiable additional information.
